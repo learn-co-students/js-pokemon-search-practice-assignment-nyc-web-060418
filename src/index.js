@@ -36,22 +36,24 @@ document.addEventListener("DOMContentLoaded", function() {
       let searchTerm = pokemonSearch.value;
       let arr = [];
 
-      for (var i in store) {
-        if (store[i].name.includes(searchTerm)){
-          arr.push(store[i]);
+      if (searchTerm){
+        for (var i in store) {
+          if (store[i].name.includes(searchTerm)){
+            arr.push(store[i]);
+          }
         }
+
+        arr.forEach(function(pokemon){
+          pokemonContainer.innerHTML += pokemon.render();
+        })
+
+        const foundPokemon = pokemonContainer.getElementsByClassName('flip-image')
+        let foundPokemonArr = Array.from(foundPokemon)
+
+        foundPokemonArr.forEach(function(pokemon) {
+          pokemon.addEventListener('click', flipImage.bind(pokemon))
+        })
       }
-
-      arr.forEach(function(pokemon){
-        pokemonContainer.innerHTML += pokemon.render();
-      })
-
-      const foundPokemon = pokemonContainer.getElementsByClassName('flip-image')
-      let foundPokemonArr = Array.from(foundPokemon)
-
-      foundPokemonArr.forEach(function(pokemon) {
-        pokemon.addEventListener('click', flipImage.bind(pokemon))
-      })
     }
 
 
