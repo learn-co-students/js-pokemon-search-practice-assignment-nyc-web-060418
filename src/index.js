@@ -62,11 +62,11 @@ document.addEventListener("DOMContentLoaded", function() {
       console.log(this.dataset.poke);
       let pokemonBox = document.getElementById(this.dataset.poke)
       let imgTag = pokemonBox.querySelector('img')
-
-      if (imgTag.src == this.frontUrl) {
-        imgTag.src = this.backUrl
+      debugger
+      if (imgTag.src == store[this.dataset.poke].frontUrl) {
+        imgTag.src = store[this.dataset.poke].backUrl
       } else {
-        imgTag.src = this.frontUrl
+        imgTag.src = store[this.dataset.poke].frontUrl
       }
     }
   }
